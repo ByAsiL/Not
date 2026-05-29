@@ -1,24 +1,28 @@
-# İhale Hafızası - Excel Mantıklı Sürüm
+# İhale Hafızası
 
-Bu sürüm sıfırdan sadeleştirildi.
+Bu paket, kullanıcının gönderdiği `index.html` kodu temel alınarak PWA uygulama paketi haline getirilmiştir.
 
-## Bölümler
+## İçerik
 
-- İhale Kaydet
-- Kayıtlı İhaleler
+- index.html
+- manifest.json
+- service-worker.js
+- icon-192.png
+- icon-512.png
+- README.md
 
-## Yeni davranış
+## GitHub Pages Kurulum
 
-- Kayıtlı İhaleler ekranında sadece İKN ve kalan/geçen gün görünür.
-- İKN'ye tıklayınca ayrı bir İhale Detayı sayfası açılır.
-- Detay sayfasında Excel mantığında şu bölümler görünür:
-  - Özet bilgiler
-  - Yapılacak işler
-  - Satın alınacaklar
-  - Metraj / maliyet
-  - İdari şartname / kritik bilgiler
-  - Riskler
+1. ZIP dosyasını aç.
+2. İçindeki dosyaları GitHub repository ana dizinine yükle.
+3. `Settings > Pages` bölümüne gir.
+4. Source: `Deploy from a branch`
+5. Branch: `main`
+6. Folder: `/ root`
+7. Save de.
+8. Verilen linki Android telefonda aç.
+9. Menüden `Ana ekrana ekle` veya `Uygulamayı yükle` seç.
 
-## Başlangıç verisi
+## Not
 
-Geçmiş ihaleler sıfırlandı. Sadece 1 adet örnek ihale vardır.
+Veriler cihazdaki localStorage içinde saklanır. Telefon değişirse veya tarayıcı verisi silinirse kayıtlar kaybolabilir. Uygulamadaki `Dışa Aktar` butonuyla düzenli yedek alın.

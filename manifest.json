@@ -1,12 +1,12 @@
 {
   "name": "İhale Hafızası",
   "short_name": "İhale",
-  "description": "İhale kaydetme ve Excel mantığında detay görüntüleme uygulaması.",
+  "description": "ChatGPT ihale analizlerini yapıştırıp otomatik kayıt altına alan mobil ihale takip uygulaması.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#070b10",
-  "theme_color": "#070b10",
+  "background_color": "#eef2f7",
+  "theme_color": "#0a1628",
   "orientation": "portrait",
   "icons": [
     {
