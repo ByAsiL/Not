@@ -1,17 +1,24 @@
-# İhale Hafızası - Sade Sürüm
+# İhale Hafızası - Excel Mantıklı Sürüm
 
-Bu sürüm sadece iki bölüm içerir:
+Bu sürüm sıfırdan sadeleştirildi.
+
+## Bölümler
 
 - İhale Kaydet
 - Kayıtlı İhaleler
 
-Kayıtlı ihaleler ekranında listede sadece İKN ve kalan/geçen gün görünür. İKN'ye tıklayınca tüm detay açılır.
+## Yeni davranış
 
-Renk mantığı:
-- Sarı: yaklaşan ihale
-- Kırmızı: tarihi geçmiş / bitmiş ihale
-- Yeşil: durumu kazanıldı / sonuçlandı / tamamlandı olan geçmiş ihale
-- Gri: ihale tarihi eksik
+- Kayıtlı İhaleler ekranında sadece İKN ve kalan/geçen gün görünür.
+- İKN'ye tıklayınca ayrı bir İhale Detayı sayfası açılır.
+- Detay sayfasında Excel mantığında şu bölümler görünür:
+  - Özet bilgiler
+  - Yapılacak işler
+  - Satın alınacaklar
+  - Metraj / maliyet
+  - İdari şartname / kritik bilgiler
+  - Riskler
 
-Güvenlik notu:
-Bu sürümde şifre, gelir-gider ve yapılacaklar bölümleri kaldırıldı.
+## Başlangıç verisi
+
+Geçmiş ihaleler sıfırlandı. Sadece 1 adet örnek ihale vardır.

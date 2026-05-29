@@ -1,4 +1,4 @@
-const CACHE_NAME = "ihale-hafizasi-sade-v1";
+const CACHE_NAME = "ihale-hafizasi-excel-v1";
 const ASSETS = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", event => {

@@ -9,67 +9,82 @@
   <link rel="icon" href="icon-192.png" />
   <style>
     :root {
-      --bg:#070b10; --panel:#101821; --panel2:#0b1118; --card:#131d28; --line:rgba(255,255,255,.10);
-      --text:#f8fafc; --muted:#94a3b8; --cyan:#22d3ee; --yellow:#facc15; --red:#fb7185; --green:#34d399;
-      --shadow:0 20px 55px rgba(0,0,0,.35);
+      --bg:#070b10; --panel:#111a24; --panel2:#0b1118; --card:#141f2b;
+      --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.18);
+      --text:#f8fafc; --muted:#94a3b8; --muted2:#64748b;
+      --cyan:#22d3ee; --cyan2:#67e8f9; --yellow:#facc15; --red:#fb7185; --green:#34d399;
+      --shadow:0 22px 60px rgba(0,0,0,.34);
     }
     * { box-sizing:border-box; }
     html,body { margin:0; min-height:100%; font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
     body:before { content:""; position:fixed; inset:0; pointer-events:none; background:radial-gradient(circle at 85% 0%,rgba(34,211,238,.12),transparent 30%),radial-gradient(circle at 0% 100%,rgba(59,130,246,.10),transparent 35%); }
     button,input,textarea,select { font:inherit; }
     button { cursor:pointer; }
-    .app { position:relative; max-width:920px; margin:0 auto; min-height:100vh; padding:12px; }
-    .top { border:1px solid var(--line); background:rgba(16,24,33,.94); border-radius:24px; padding:14px; box-shadow:var(--shadow); margin-bottom:12px; }
+    .app { position:relative; max-width:980px; margin:0 auto; min-height:100vh; padding:12px; }
+    .top { border:1px solid var(--line); background:rgba(17,26,36,.94); border-radius:24px; padding:14px; box-shadow:var(--shadow); margin-bottom:12px; position:sticky; top:8px; z-index:5; backdrop-filter:blur(18px); }
     .toprow { display:flex; align-items:center; gap:12px; }
     .logo { width:50px; height:50px; border-radius:18px; border:0; background:var(--cyan); color:#061018; font-weight:950; font-size:18px; display:grid; place-items:center; flex:0 0 50px; }
     .brandbtn { text-align:left; background:transparent; border:0; color:inherit; padding:0; min-width:0; }
-    .eyebrow { color:#67e8f9; font-size:12px; font-weight:850; }
+    .eyebrow { color:var(--cyan2); font-size:12px; font-weight:850; }
     h1,h2,h3,p { margin:0; }
-    h1 { font-size:28px; line-height:1.05; letter-spacing:-.04em; }
-    h2 { font-size:24px; line-height:1.05; letter-spacing:-.04em; }
-    h3 { font-size:19px; line-height:1.15; letter-spacing:-.03em; }
-    .muted { color:var(--muted); font-size:13px; line-height:1.55; }
+    h1 { font-size:27px; line-height:1.05; letter-spacing:-.04em; }
+    h2 { font-size:23px; line-height:1.08; letter-spacing:-.04em; }
+    h3 { font-size:18px; line-height:1.15; letter-spacing:-.03em; }
+    .muted { color:var(--muted); font-size:13px; line-height:1.5; }
     .search { margin-top:12px; position:relative; }
-    .search input { width:100%; height:46px; border-radius:17px; border:1px solid var(--line); background:var(--panel2); color:#fff; outline:0; padding:0 14px 0 42px; font-weight:750; }
+    .search input { width:100%; height:45px; border-radius:17px; border:1px solid var(--line); background:var(--panel2); color:#fff; outline:0; padding:0 14px 0 42px; font-weight:750; }
     .search span { position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#64748b; }
-    .search input:focus, input:focus, textarea:focus, select:focus { border-color:rgba(34,211,238,.7); box-shadow:0 0 0 4px rgba(34,211,238,.10); }
+    input:focus, textarea:focus, select:focus { border-color:rgba(34,211,238,.72); box-shadow:0 0 0 4px rgba(34,211,238,.10); }
     .page { display:none; }
     .page.active { display:block; }
     .homegrid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .homecard { min-height:160px; border:1px solid var(--line); background:var(--card); border-radius:24px; padding:14px; color:inherit; text-align:left; box-shadow:var(--shadow); transition:.16s ease; }
+    .homecard { min-height:158px; border:1px solid var(--line); background:var(--card); border-radius:24px; padding:14px; color:inherit; text-align:left; box-shadow:var(--shadow); transition:.16s ease; }
     .homecard:active { transform:scale(.98); }
     .homeicon { width:48px; height:48px; border-radius:17px; display:grid; place-items:center; background:#0a1118; border:1px solid var(--line); font-size:25px; margin-bottom:16px; }
     .homecard .title { font-size:20px; font-weight:950; line-height:1.05; margin-bottom:8px; }
-    .homecard .go { color:#67e8f9; font-weight:950; font-size:13px; margin-top:14px; }
-    .panel { border:1px solid var(--line); background:rgba(16,24,33,.94); border-radius:24px; padding:14px; box-shadow:var(--shadow); margin-bottom:12px; }
+    .homecard .go { color:var(--cyan2); font-weight:950; font-size:13px; margin-top:14px; }
+    .panel { border:1px solid var(--line); background:rgba(17,26,36,.94); border-radius:24px; padding:14px; box-shadow:var(--shadow); margin-bottom:12px; }
     .panelhead { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
-    .back { border:0; border-radius:16px; background:rgba(255,255,255,.08); color:#fff; padding:11px 13px; font-weight:900; }
+    .back { border:0; border-radius:16px; background:rgba(255,255,255,.08); color:#fff; padding:11px 13px; font-weight:900; white-space:nowrap; }
     .btn { width:100%; border:0; border-radius:17px; padding:13px 14px; background:var(--cyan); color:#061018; font-weight:950; }
     .btn.secondary { background:rgba(255,255,255,.09); color:#fff; }
     .btnrow { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
     label b { display:block; color:#cbd5e1; font-size:12px; margin:0 0 7px; }
     input,textarea,select { width:100%; border:1px solid var(--line); background:var(--panel2); color:#fff; border-radius:16px; padding:12px; outline:0; font-weight:700; }
-    textarea { min-height:92px; resize:vertical; line-height:1.5; }
+    textarea { min-height:96px; resize:vertical; line-height:1.5; }
     .fields { display:grid; gap:10px; }
-    @media(min-width:680px) { .fields { grid-template-columns:1fr 1fr; } .wide { grid-column:span 2; } .homecard { min-height:190px; } }
+    @media(min-width:720px) { .fields { grid-template-columns:1fr 1fr; } .wide { grid-column:span 2; } }
     .list { display:grid; gap:9px; }
     .tenderrow { border:1px solid var(--line); background:var(--panel2); border-radius:20px; padding:14px; color:inherit; text-align:left; width:100%; display:flex; justify-content:space-between; align-items:center; gap:12px; }
     .tenderrow .ikn { font-size:21px; font-weight:950; letter-spacing:-.03em; }
     .tenderrow .days { margin-top:5px; font-size:13px; font-weight:850; }
-    .tenderrow.future { border-color:rgba(250,204,21,.35); background:rgba(250,204,21,.08); }
+    .tenderrow.future { border-color:rgba(250,204,21,.38); background:rgba(250,204,21,.08); }
     .tenderrow.future .days { color:var(--yellow); }
-    .tenderrow.past { border-color:rgba(251,113,133,.35); background:rgba(251,113,133,.08); }
+    .tenderrow.past { border-color:rgba(251,113,133,.36); background:rgba(251,113,133,.08); }
     .tenderrow.past .days { color:#fecdd3; }
     .tenderrow.done { border-color:rgba(52,211,153,.35); background:rgba(52,211,153,.08); }
     .tenderrow.done .days { color:#86efac; }
     .tenderrow.unknown .days { color:#cbd5e1; }
     .badge { border-radius:999px; padding:6px 9px; background:rgba(255,255,255,.08); color:#cbd5e1; font-size:11px; font-weight:950; white-space:nowrap; }
-    .detailtop { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px; }
-    .smallpill { display:inline-flex; border-radius:999px; padding:6px 10px; background:rgba(34,211,238,.12); color:#67e8f9; font-weight:950; font-size:12px; margin-bottom:10px; }
-    .info { border:1px solid var(--line); background:var(--panel2); border-radius:18px; padding:12px; margin-top:9px; }
+    .summarygrid { display:grid; gap:9px; }
+    @media(min-width:720px) { .summarygrid { grid-template-columns:1fr 1fr; } }
+    .info { border:1px solid var(--line); background:var(--panel2); border-radius:18px; padding:12px; }
     .info .l { color:#94a3b8; font-size:12px; font-weight:900; margin-bottom:6px; }
     .info .v { color:#e2e8f0; font-weight:800; white-space:pre-wrap; line-height:1.45; }
+    .sectiontitle { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:16px 0 8px; }
+    .sectiontitle h3 { color:#fff; }
+    .table { border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--panel2); }
+    .tr { display:grid; grid-template-columns:1.3fr .55fr .5fr 1fr; border-top:1px solid var(--line); }
+    .tr:first-child { border-top:0; }
+    .tr.head { background:rgba(34,211,238,.10); color:var(--cyan2); font-size:12px; font-weight:950; }
+    .td { padding:10px; font-size:12px; line-height:1.35; border-left:1px solid var(--line); overflow-wrap:anywhere; }
+    .td:first-child { border-left:0; }
+    .tr:not(.head) .td { color:#dbeafe; font-weight:650; }
+    .tr.two { grid-template-columns:.8fr 1.6fr; }
+    .tr.risk { grid-template-columns:1.1fr .55fr 1.3fr; }
     .empty { border:1px dashed rgba(255,255,255,.18); background:var(--panel2); border-radius:20px; padding:20px; text-align:center; color:#94a3b8; font-weight:750; }
+    .detailtop { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+    .smallpill { display:inline-flex; border-radius:999px; padding:6px 10px; background:rgba(34,211,238,.12); color:var(--cyan2); font-weight:950; font-size:12px; margin-bottom:10px; }
     .toast { position:fixed; left:50%; bottom:16px; transform:translateX(-50%); background:var(--cyan); color:#061018; border-radius:999px; padding:12px 16px; font-weight:950; box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:.2s; z-index:50; }
     .toast.show { opacity:1; bottom:26px; }
   </style>
@@ -90,12 +105,13 @@
     <section id="home" class="page active"></section>
     <section id="add" class="page"></section>
     <section id="saved" class="page"></section>
+    <section id="detail" class="page"></section>
   </div>
   <div id="toast" class="toast">Kaydedildi</div>
 
 <script>
-const STORAGE_KEY = "ihale-hafizasi-sade-v1";
-const DEFAULT_DATA = {"tenders": [{"id": "2026-776858", "ikn": "2026/776858", "ihaleTarihi": "2026-05-25T10:00", "kurum": "Muğla Gençlik ve Spor İl Müdürlüğü", "isAdi": "Muğla Menteşe Atatürk Spor Salonu Yapım İşi", "yer": "Menteşe / Muğla", "yaklasikMaliyet": "143.500.000,00 TL KDV hariç", "onerilenTeklif": "112.600.000 - 113.750.000 TL aralığı", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Yapım işi / idari şartnameye göre kontrol edilecek", "strateji": "Sınır değer N(1) yaklaşık 110.694.805,73 TL; sınır altı riskli. Dengeli teklif 113,75 milyon TL civarı not edilmişti.", "risk": "Sınır altı teklifler açıklama istenilmeksizin reddedilebilir. Teminat ve iş deneyimi kesin kontrol edilmeli.", "durum": "Geçmiş analiz", "not": "Geçmiş konuşmalardan aktarıldı."}, {"id": "2026-729923-tki", "ikn": "2026/729923", "ihaleTarihi": "2026-06-03T10:00", "kurum": "TKİ Genel Müdürlüğü / Garp Linyitleri İşletmesi Müdürlüğü", "isAdi": "Muhtelif İşyerlerinde Müteferrik İşler İçin Beden İşçisi Çalıştırılması", "yer": "Tunçbilek / Tavşanlı / Kütahya", "yaklasikMaliyet": "33.361.172,10 TL KDV hariç", "onerilenTeklif": "Geçmiş notlarda sınır değer 31.257.314,40 TL ve 31.257.316,26 TL değerlendirmeleri geçti", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Hizmet işi / personel çalıştırma ve benzer iş şartı kontrol edilecek", "strateji": "Personel, SGK, teminat ve sınır değer birlikte takip edilmeli.", "risk": "Aynı İKN geçmiş notlarda farklı içeriklerle de geçti; EKAP dosyasıyla doğrulanmalı.", "durum": "Takipte", "not": "Geçmiş konuşmalardan aktarıldı."}, {"id": "2026-760698", "ikn": "2026/760698", "ihaleTarihi": "2026-05-14T11:00", "kurum": "Haliliye Ek Hizmet Binası", "isAdi": "Medikal Kuru Hava ve Vakum Sistemleri Yapım İşi", "yer": "Haliliye / Şanlıurfa", "yaklasikMaliyet": "7.313.895,61 TL KDV hariç", "onerilenTeklif": "6.180.000 TL avantajlı teklif notu", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Mekanik / medikal sistem yapım işi", "strateji": "Riskli aralık 5.900.000–6.050.000 TL; dengeli 6.100.000–6.350.000 TL olarak not edilmişti.", "risk": "Sınır değer ve teknik uygunluk kontrol edilmeli.", "durum": "Geçmiş analiz", "not": "Geçmiş konuşmalardan aktarıldı."}, {"id": "2026-760492", "ikn": "2026/760492", "ihaleTarihi": "2026-05-14T10:30", "kurum": "Sinop Merkez Fatih İlkokulu", "isAdi": "Dış Cephe Boya, WC ve Çatı Onarım Yapımı", "yer": "Sinop Merkez", "yaklasikMaliyet": "7.514.270 TL KDV hariç", "onerilenTeklif": "7.138.557 – 7.739.698 TL teklif bandı", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Yapım işi / anahtar teslimi götürü bedel", "strateji": "Onarım kalemleri, çatı ve boya işçilikleri birlikte değerlendirilmişti.", "risk": "Detaylı dosya ve idari şartnameyle tekrar doğrulanmalı.", "durum": "Geçmiş analiz", "not": "Geçmiş dosya özetinden aktarıldı."}, {"id": "2025-425790", "ikn": "2025/425790", "ihaleTarihi": "", "kurum": "TKİ Garp Linyitleri İşletmesi Müdürlüğü", "isAdi": "Müteferrik İşlerde Personel Çalıştırılması", "yer": "Tunçbilek / Kütahya", "yaklasikMaliyet": "25.480.257,88 TL taban maliyet notu", "onerilenTeklif": "26.754.270,77 TL önerilen fiyat; makul bant 26.244.665,62 - 27.263.875,93 TL", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Hizmet işi / personel çalıştırma", "strateji": "2025 fiyat seviyesiyle hesap yapılması istenmişti; sonuç ilanı ayrıca incelenecekti.", "risk": "İhale tarihi ve sonuç bilgisi eksik; dosyayla doğrulanmalı.", "durum": "Geçmiş kayıt", "not": "Geçmiş konuşmadan aktarıldı."}, {"id": "2026-768199", "ikn": "2026/768199", "ihaleTarihi": "", "kurum": "Karapınar TOKİ Yavuz Selim İlkokulu", "isAdi": "Okul Onarımı", "yer": "Karapınar", "yaklasikMaliyet": "3.555.697,25 TL", "onerilenTeklif": "Dosya tekrar kontrol edilerek belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Yapım / onarım işi", "strateji": "Tekliflerin açılmasına ilişkin tutanaktan geçmiş kayıt olarak aktarıldı.", "risk": "Kurum, tarih ve detaylar dosyayla doğrulanmalı.", "durum": "Eksik bilgi", "not": "Geçmiş kayıtlardan aktarıldı."}, {"id": "2026-722654", "ikn": "2026/722654", "ihaleTarihi": "", "kurum": "Gaziantep okul mekanik onarım işi", "isAdi": "6 Okul Mekanik Onarım İşi", "yer": "Gaziantep", "yaklasikMaliyet": "6.321.567,11 TL KDV hariç", "onerilenTeklif": "Dosya ve rekabet durumuna göre belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Mekanik onarım / yapım işi", "strateji": "ÇŞB pozları ve 2026 rayiçleriyle yaklaşık maliyet oluşturulmuştu.", "risk": "Poz karşılıkları ve piyasa farkları tekrar kontrol edilmeli.", "durum": "Geçmiş maliyet", "not": "Geçmiş konuşmalardan aktarıldı."}, {"id": "2026-880128", "ikn": "2026/880128", "ihaleTarihi": "", "kurum": "Bozova Belediyesi Başkanlığı Destek Hizmetleri", "isAdi": "Halı, Taziye Evi Yastığı ve Klima Alım İşi", "yer": "Bozova / Şanlıurfa", "yaklasikMaliyet": "14.372.250 TL not edildi", "onerilenTeklif": "Ürün/marka/teknik şartname uyumuna göre belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Mal alımı / benzer iş şartı kontrol edilecek", "strateji": "Halı, yastık ve klima kalemlerinde piyasa/DMO karşılaştırması yapılmalı.", "risk": "Teknik şartname, numune, marka/model ve teslim şartları kritik.", "durum": "Geçmiş kayıt", "not": "Geçmiş konuşmalardan aktarıldı."}, {"id": "2026-714288", "ikn": "2026/714288", "ihaleTarihi": "", "kurum": "18 Mart Çan bölgesi işi olarak geçmiş notlarda geçti", "isAdi": "Yaklaşık maliyet / teklif ve kâr oranı çalışması", "yer": "Çan / Çanakkale", "yaklasikMaliyet": "79.975.636,35 TL not edildi", "onerilenTeklif": "Detaylı analiz dosyasına göre belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "İdari şartnameye göre kontrol edilecek", "strateji": "SGK, işçilik, kâr oranı ve sınır değer birlikte değerlendirilecek.", "risk": "Kurum/iş adı geçmiş özetten eksik; dosya ile doğrulanmalı.", "durum": "Eksik bilgi", "not": "Geçmiş konuşmalardan aktarıldı."}, {"id": "2026-610310", "ikn": "2026/610310", "ihaleTarihi": "", "kurum": "Antalya İl Milli Eğitim Müdürlüğü", "isAdi": "Kepez Demirgül Ortaokulu ve Mevlana İlkokulu Onarım İşi", "yer": "Kepez / Antalya", "yaklasikMaliyet": "Dosya üzerinden çıkarılacak", "onerilenTeklif": "Dosya/metraj sonrası belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "Üst yapı inşaat, elektrik ve makine işleri", "strateji": "Mahal listesi, teknik şartnameler, elektrik/makine disiplinleri ayrı ayrı kontrol edilecek.", "risk": "Pafta okunurluğu ve disiplin çakışmaları nedeniyle çift sayım riski kontrol edilmeli.", "durum": "Not kaydı", "not": "Geçmiş konuşmalardan aktarıldı."}, {"id": "2026-610385", "ikn": "2026/610385", "ihaleTarihi": "", "kurum": "Geçmiş dosya yüklemesi", "isAdi": "Detaylı fiyat teklifi ve satın alınacak ürünler çalışması", "yer": "Dosyadan kontrol edilecek", "yaklasikMaliyet": "Dosya üzerinden çıkarılacak", "onerilenTeklif": "Detaylı analiz sonrası belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "İdari şartnameye göre kontrol edilecek", "strateji": "Tüm kalemler, gerçekçi fiyat ve satın alınacak ürün listesi istenmişti.", "risk": "Eksik bilgi; dosya tekrar incelenmeli.", "durum": "Eksik bilgi", "not": "Geçmiş konuşmalardan İKN olarak aktarıldı."}, {"id": "2026-898036", "ikn": "2026/898036", "ihaleTarihi": "", "kurum": "Geçmiş dosya yüklemesi", "isAdi": "Çatı alanı hesaplama işi", "yer": "Dosyadan kontrol edilecek", "yaklasikMaliyet": "Dosya üzerinden çıkarılacak", "onerilenTeklif": "Dosya/metraj sonrası belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "İdari şartnameye göre kontrol edilecek", "strateji": "Çatı alanı/metraj hesabı istenmişti.", "risk": "Detaylar eksik; dosya tekrar incelenmeli.", "durum": "Eksik bilgi", "not": "Geçmiş konuşmalardan İKN olarak aktarıldı."}, {"id": "2026-732394", "ikn": "2026/732394", "ihaleTarihi": "", "kurum": "Geçmiş dosya yüklemesi", "isAdi": "Parke döşeme / yaklaşık maliyet ve SGK değerlendirmesi", "yer": "Dosyadan kontrol edilecek", "yaklasikMaliyet": "Dosya üzerinden çıkarılacak", "onerilenTeklif": "Dosya/metraj sonrası belirlenecek", "teminat": "Teklifin en az %3'ü", "isDeneyimi": "İdari şartnameye göre kontrol edilecek", "strateji": "Yapılacak iş, ödeme ve fatura/SGK yönünden değerlendirme istenmişti.", "risk": "Detaylar eksik; dosya tekrar incelenmeli.", "durum": "Eksik bilgi", "not": "Geçmiş konuşmalardan İKN olarak aktarıldı."}, {"id": "2026-755956", "ikn": "2026/755956", "ihaleTarihi": "", "kurum": "Geçmiş konuşmada İKN geçti", "isAdi": "Detaylar dosyadan kontrol edilecek", "yer": "Bilinmiyor", "yaklasikMaliyet": "Bilinmiyor", "onerilenTeklif": "Bilinmiyor", "teminat": "Teklifin en az %3'ü varsayılmalı; şartnameyle kontrol edilmeli", "isDeneyimi": "İdari şartnameye göre kontrol edilecek", "strateji": "Geçmiş listede İKN olarak kayıtlıydı.", "risk": "Kurum, tarih ve maliyet bilgisi eksik.", "durum": "Eksik bilgi", "not": "Geçmiş konuşma listesinden aktarıldı."}, {"id": "2026-295014", "ikn": "2026/295014", "ihaleTarihi": "", "kurum": "Geçmiş konuşmada İKN geçti", "isAdi": "Detaylar dosyadan kontrol edilecek", "yer": "Bilinmiyor", "yaklasikMaliyet": "Bilinmiyor", "onerilenTeklif": "Bilinmiyor", "teminat": "Şartnameyle kontrol edilmeli", "isDeneyimi": "İdari şartnameye göre kontrol edilecek", "strateji": "Geçmiş listede İKN olarak kayıtlıydı.", "risk": "Kurum, tarih ve maliyet bilgisi eksik.", "durum": "Eksik bilgi", "not": "Geçmiş konuşma listesinden aktarıldı."}, {"id": "2026-153498", "ikn": "2026/153498", "ihaleTarihi": "", "kurum": "Geçmiş konuşmada İKN geçti", "isAdi": "Detaylar dosyadan kontrol edilecek", "yer": "Bilinmiyor", "yaklasikMaliyet": "Bilinmiyor", "onerilenTeklif": "Bilinmiyor", "teminat": "Şartnameyle kontrol edilmeli", "isDeneyimi": "İdari şartnameye göre kontrol edilecek", "strateji": "Geçmiş listede İKN olarak kayıtlıydı.", "risk": "Kurum, tarih ve maliyet bilgisi eksik.", "durum": "Eksik bilgi", "not": "Geçmiş konuşma listesinden aktarıldı."}], "selectedTender": "2026-776858"};
+const STORAGE_KEY = "ihale-hafizasi-excel-v1";
+const DEFAULT_DATA = {"tenders": [{"id": "sample-2026-000001", "ikn": "2026/000001", "ihaleTarihi": "2026-06-15T10:00", "kurum": "Örnek Kurum Müdürlüğü", "isAdi": "Örnek Okul Bakım Onarım İşi", "yer": "İstanbul", "yaklasikMaliyet": "5.250.000 TL KDV hariç", "onerilenTeklif": "4.890.000 TL", "teminat": "146.700 TL (%3)", "durum": "Takipte", "isDeneyimi": "Yapım işi / bakım onarım benzer iş", "ozet": "Bu örnek kayıt, uygulamada ihalenin nasıl görüneceğini göstermek için eklendi. Yeni kayıtlarda buradaki tüm alanlar senin ChatGPT’den aldığın notla dolacak.", "yapilacakIsler": [{"kalem": "Mevcut zemin kaplamalarının sökülmesi", "miktar": "350", "birim": "m²", "not": "Moloz nakli dahil"}, {"kalem": "Seramik kaplama yapılması", "miktar": "350", "birim": "m²", "not": "Malzeme + işçilik"}, {"kalem": "İç cephe boya yapılması", "miktar": "2.100", "birim": "m²", "not": "Astar + iki kat boya"}, {"kalem": "Elektrik priz ve anahtar yenileme", "miktar": "80", "birim": "adet", "not": "Marka şartnameye uygun"}], "satinAlinacaklar": [{"urun": "Seramik", "miktar": "385", "birim": "m²", "not": "%10 fire dahil"}, {"urun": "İç cephe boya", "miktar": "420", "birim": "kg", "not": "Renk kurum onaylı"}, {"urun": "Priz / anahtar grubu", "miktar": "80", "birim": "adet", "not": "Teknik şartnameye uygun"}, {"urun": "Alçı / tamir harcı", "miktar": "60", "birim": "torba", "not": "Yüzey düzeltme için"}], "maliyetKalemleri": [{"kalem": "İnşaat işleri", "metraj": "1", "birim": "grup", "tutar": "3.100.000 TL"}, {"kalem": "Elektrik işleri", "metraj": "1", "birim": "grup", "tutar": "620.000 TL"}, {"kalem": "Malzeme nakliye ve fire", "metraj": "1", "birim": "grup", "tutar": "410.000 TL"}, {"kalem": "İşçilik / SGK / genel gider", "metraj": "1", "birim": "grup", "tutar": "760.000 TL"}], "idariBilgiler": [{"baslik": "Teminat", "detay": "Teklifin en az %3’ü"}, {"baslik": "İş deneyimi", "detay": "İdari şartnameye göre kontrol edilecek"}, {"baslik": "Teklif geçerlilik", "detay": "Şartnameye göre takip edilecek"}, {"baslik": "Fiyat farkı", "detay": "İdari şartnameye göre kontrol edilecek"}], "riskler": [{"risk": "Metraj eksikliği", "onem": "Orta", "not": "Keşif ve mahal listesiyle tekrar kontrol edilmeli"}, {"risk": "Sınır değer", "onem": "Yüksek", "not": "Teklif sınır değer altına düşmemeli"}, {"risk": "Teknik şartname uyumu", "onem": "Yüksek", "not": "Malzeme marka/model uygunluğu kontrol edilmeli"}], "createdAt": "2026-05-29T00:00:00.000Z"}], "selectedId": "sample-2026-000001"};
 const starterText = `İKN:
 İhale tarihi:
 Kurum:
@@ -105,8 +121,22 @@ Yaklaşık maliyet:
 Önerilen teklif:
 Teminat:
 İş deneyimi / benzer iş:
-Teklif stratejisi:
-Risk notu:`;
+Özet:
+
+YAPILACAK İŞLER:
+- İş kalemi | miktar | birim | not
+
+SATIN ALINACAKLAR:
+- Ürün | miktar | birim | not
+
+MALİYET KALEMLERİ:
+- Kalem | metraj | birim | tutar
+
+İDARİ BİLGİLER:
+- Başlık | detay
+
+RİSKLER:
+- Risk | önem | not`;
 
 let data = load();
 let current = "home";
@@ -120,19 +150,20 @@ function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
 function uid() { return crypto && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2); }
 function esc(v) { return String(v ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
 function q() { return document.getElementById("search").value.trim().toLocaleLowerCase("tr-TR"); }
+function emptyTender() {
+  return { id: uid(), ikn:"", ihaleTarihi:"", kurum:"", isAdi:"", yer:"", yaklasikMaliyet:"", onerilenTeklif:"", teminat:"Teklifin en az %3'ü", durum:"Takipte", isDeneyimi:"", ozet:"", yapilacakIsler:[], satinAlinacaklar:[], maliyetKalemleri:[], idariBilgiler:[], riskler:[], createdAt:new Date().toISOString() };
+}
 function filterTenders() {
   const s = q();
-  if(!s) return data.tenders;
-  return data.tenders.filter(t => [t.ikn,t.kurum,t.isAdi,t.yer,t.durum].join(" ").toLocaleLowerCase("tr-TR").includes(s));
-}
-function emptyTender() {
-  return { id: uid(), ikn:"", ihaleTarihi:"", kurum:"", isAdi:"", yer:"", yaklasikMaliyet:"", onerilenTeklif:"", teminat:"Teklifin en az %3'ü", isDeneyimi:"", strateji:"", risk:"", durum:"Takipte", not:"" };
+  let arr = data.tenders || [];
+  if(s) arr = arr.filter(t => [t.ikn,t.kurum,t.isAdi,t.yer,t.durum].join(" ").toLocaleLowerCase("tr-TR").includes(s));
+  return arr.sort(tenderSort);
 }
 function go(page) {
   current = page;
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(page).classList.add("active");
-  document.getElementById("title").textContent = page === "home" ? "Ana Menü" : page === "add" ? "İhale Kaydet" : "Kayıtlı İhaleler";
+  document.getElementById("title").textContent = page === "home" ? "Ana Menü" : page === "add" ? "İhale Kaydet" : page === "saved" ? "Kayıtlı İhaleler" : "İhale Detayı";
   window.scrollTo({ top:0, behavior:"smooth" });
   render();
 }
@@ -164,7 +195,7 @@ function formatDate(v) {
   return new Intl.DateTimeFormat("tr-TR", { day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit" }).format(d);
 }
 function tenderSort(a,b) {
-  if(!a.ihaleTarihi && !b.ihaleTarihi) return a.ikn.localeCompare(b.ikn, "tr");
+  if(!a.ihaleTarihi && !b.ihaleTarihi) return String(a.ikn).localeCompare(String(b.ikn), "tr");
   if(!a.ihaleTarihi) return 1;
   if(!b.ihaleTarihi) return -1;
   return new Date(a.ihaleTarihi) - new Date(b.ihaleTarihi);
@@ -181,61 +212,24 @@ function renderHome() {
       <button class="homecard" onclick="go('saved')">
         <div class="homeicon">🗂️</div>
         <div class="title">Kayıtlı İhaleler</div>
-        <p class="muted">${data.tenders.length} ihale kayıtlı. İKN’ye dokun, detayını gör.</p>
+        <p class="muted">${data.tenders.length} ihale kayıtlı. İKN’ye dokun, ayrı detay sayfası açılsın.</p>
         <div class="go">Bölüme gir →</div>
       </button>
     </div>
     <div class="panel" style="margin-top:12px">
-      <h2>Özet</h2>
-      <p class="muted" style="margin-top:6px">Uygulama artık sadece ihale kaydetme ve kayıtlı ihaleleri takip etme üzerine kuruldu.</p>
+      <h2>Yeni mantık</h2>
+      <p class="muted" style="margin-top:6px">Liste ekranında sadece İKN ve kalan/geçen gün görünür. İKN’ye tıklayınca yeni detay sayfasında Excel mantığında tüm işler, ürünler, maliyetler ve riskler açılır.</p>
     </div>
   `;
-}
-function parseTenderText(text) {
-  const t = emptyTender();
-  const map = [
-    [["İKN","IKN"],"ikn"],
-    [["İhale tarihi","Teklif tarihi","Teklif son tarihi","Tarih"],"ihaleTarihi"],
-    [["Kurum"],"kurum"],
-    [["İş adı","İşin adı","Is adi"],"isAdi"],
-    [["Yer","İl","İl / ilçe"],"yer"],
-    [["Yaklaşık maliyet","Kurum yaklaşık maliyeti"],"yaklasikMaliyet"],
-    [["Önerilen teklif","Teklif","Fiyat teklifi"],"onerilenTeklif"],
-    [["Teminat"],"teminat"],
-    [["İş deneyimi / benzer iş","İş deneyimi","Benzer iş"],"isDeneyimi"],
-    [["Teklif stratejisi","Strateji"],"strateji"],
-    [["Risk notu","Risk"],"risk"],
-    [["Durum"],"durum"],
-    [["Not"],"not"]
-  ];
-  text.split(/\n+/).forEach(raw => {
-    const line = raw.trim();
-    const idx = line.indexOf(":");
-    if(idx < 0) return;
-    const label = line.slice(0,idx).trim().toLocaleLowerCase("tr-TR");
-    const value = line.slice(idx+1).trim();
-    const found = map.find(([keys]) => keys.some(k => k.toLocaleLowerCase("tr-TR") === label));
-    if(found) t[found[1]] = normalizeDateValue(value, found[1]);
-  });
-  return t;
-}
-function normalizeDateValue(value, field) {
-  if(field !== "ihaleTarihi") return value;
-  if(!value) return "";
-  const iso = value.match(/(20\d{2})-(\d{2})-(\d{2})[ T]?(\d{2})?:?(\d{2})?/);
-  if(iso) return `${iso[1]}-${iso[2]}-${iso[3]}T${iso[4]||"10"}:${iso[5]||"00"}`;
-  const tr = value.match(/(\d{1,2})[./](\d{1,2})[./](20\d{2}).*?(\d{1,2})?:?(\d{2})?/);
-  if(tr) return `${tr[3]}-${tr[2].padStart(2,"0")}-${tr[1].padStart(2,"0")}T${(tr[4]||"10").padStart(2,"0")}:${tr[5]||"00"}`;
-  return value;
 }
 function renderAdd() {
   document.getElementById("add").innerHTML = `
     <div class="panel">
       <div class="panelhead">
-        <div><h2>İhale Kaydet</h2><p class="muted">Benim verdiğim notu yapıştır veya alanları elle doldur.</p></div>
+        <div><h2>İhale Kaydet</h2><p class="muted">Benim verdiğim gelişmiş ihale notunu yapıştır veya alanları doldur.</p></div>
         <button class="back" onclick="go('home')">Ana Menü</button>
       </div>
-      <label class="wide"><b>ChatGPT ihale notu</b><textarea id="pasteBox">${esc(starterText)}</textarea></label>
+      <label><b>ChatGPT ihale notu</b><textarea id="pasteBox">${esc(starterText)}</textarea></label>
       <div class="btnrow">
         <button class="btn secondary" onclick="parseBox()">Alanlara Dağıt</button>
         <button class="btn" onclick="saveTender()">İhaleyi Kaydet</button>
@@ -253,27 +247,99 @@ function renderAdd() {
         ${field("onerilenTeklif","Önerilen teklif")}
         ${field("teminat","Teminat")}
         ${area("isDeneyimi","İş deneyimi / benzer iş")}
-        ${area("strateji","Teklif stratejisi")}
-        ${area("risk","Risk notu")}
-        ${area("not","Ek not")}
+        ${area("ozet","Özet")}
+        ${area("yapilacakIslerText","Yapılacak işler", rowsToText(draft.yapilacakIsler, ["kalem","miktar","birim","not"]))}
+        ${area("satinAlinacaklarText","Satın alınacaklar", rowsToText(draft.satinAlinacaklar, ["urun","miktar","birim","not"]))}
+        ${area("maliyetKalemleriText","Maliyet kalemleri", rowsToText(draft.maliyetKalemleri, ["kalem","metraj","birim","tutar"]))}
+        ${area("idariBilgilerText","İdari bilgiler", rowsToText(draft.idariBilgiler, ["baslik","detay"]))}
+        ${area("risklerText","Riskler", rowsToText(draft.riskler, ["risk","onem","not"]))}
       </div>
     </div>
   `;
   fillDraft();
 }
 function field(id,label,type="text",cls="") { return `<label class="${cls}"><b>${label}</b><input id="f_${id}" type="${type}"></label>`; }
-function area(id,label) { return `<label class="wide"><b>${label}</b><textarea id="f_${id}"></textarea></label>`; }
+function area(id,label,value="") { return `<label class="wide"><b>${label}</b><textarea id="f_${id}">${esc(value)}</textarea></label>`; }
 function fillDraft() {
-  Object.keys(draft).forEach(k => {
+  ["ikn","ihaleTarihi","durum","kurum","isAdi","yer","yaklasikMaliyet","onerilenTeklif","teminat","isDeneyimi","ozet"].forEach(k => {
     const el = document.getElementById("f_" + k);
     if(el) el.value = draft[k] || "";
   });
 }
 function readDraft() {
-  Object.keys(draft).forEach(k => {
+  ["ikn","ihaleTarihi","durum","kurum","isAdi","yer","yaklasikMaliyet","onerilenTeklif","teminat","isDeneyimi","ozet"].forEach(k => {
     const el = document.getElementById("f_" + k);
     if(el) draft[k] = el.value;
   });
+  draft.yapilacakIsler = parseRows(document.getElementById("f_yapilacakIslerText").value, ["kalem","miktar","birim","not"]);
+  draft.satinAlinacaklar = parseRows(document.getElementById("f_satinAlinacaklarText").value, ["urun","miktar","birim","not"]);
+  draft.maliyetKalemleri = parseRows(document.getElementById("f_maliyetKalemleriText").value, ["kalem","metraj","birim","tutar"]);
+  draft.idariBilgiler = parseRows(document.getElementById("f_idariBilgilerText").value, ["baslik","detay"]);
+  draft.riskler = parseRows(document.getElementById("f_risklerText").value, ["risk","onem","not"]);
+}
+function rowsToText(rows, keys) {
+  return (rows || []).map(r => keys.map(k => r[k] || "").join(" | ")).join("\n");
+}
+function parseRows(text, keys) {
+  return String(text || "").split(/\n+/).map(x => x.trim()).filter(Boolean).map(line => {
+    line = line.replace(/^[-•]\s*/, "");
+    const parts = line.split("|").map(x => x.trim());
+    const obj = {};
+    keys.forEach((k,i) => obj[k] = parts[i] || "");
+    return obj;
+  });
+}
+function parseTenderText(text) {
+  const t = emptyTender();
+  const sections = { yapilacakIsler:"", satinAlinacaklar:"", maliyetKalemleri:"", idariBilgiler:"", riskler:"" };
+  let currentSection = "";
+  const map = [
+    [["İKN","IKN"],"ikn"],
+    [["İhale tarihi","Teklif tarihi","Teklif son tarihi","Tarih"],"ihaleTarihi"],
+    [["Kurum"],"kurum"],
+    [["İş adı","İşin adı","Is adi"],"isAdi"],
+    [["Yer","İl","İl / ilçe"],"yer"],
+    [["Yaklaşık maliyet","Kurum yaklaşık maliyeti"],"yaklasikMaliyet"],
+    [["Önerilen teklif","Teklif","Fiyat teklifi"],"onerilenTeklif"],
+    [["Teminat"],"teminat"],
+    [["İş deneyimi / benzer iş","İş deneyimi","Benzer iş"],"isDeneyimi"],
+    [["Özet"],"ozet"],
+    [["Durum"],"durum"]
+  ];
+  text.split(/\n/).forEach(raw => {
+    const line = raw.trim();
+    if(!line) return;
+    const up = line.toLocaleUpperCase("tr-TR").replace(/İ/g,"I");
+    if(up.startsWith("YAPILACAK")) { currentSection = "yapilacakIsler"; return; }
+    if(up.startsWith("SATIN")) { currentSection = "satinAlinacaklar"; return; }
+    if(up.startsWith("MALIYET") || up.startsWith("MALİYET")) { currentSection = "maliyetKalemleri"; return; }
+    if(up.startsWith("IDARI") || up.startsWith("İDARI") || up.startsWith("İDARİ")) { currentSection = "idariBilgiler"; return; }
+    if(up.startsWith("RISK") || up.startsWith("RİSK")) { currentSection = "riskler"; return; }
+    const idx = line.indexOf(":");
+    if(idx >= 0 && !currentSection) {
+      const label = line.slice(0,idx).trim().toLocaleLowerCase("tr-TR");
+      const value = line.slice(idx+1).trim();
+      const found = map.find(([keys]) => keys.some(k => k.toLocaleLowerCase("tr-TR") === label));
+      if(found) t[found[1]] = normalizeDateValue(value, found[1]);
+      return;
+    }
+    if(currentSection) sections[currentSection] += line + "\n";
+  });
+  t.yapilacakIsler = parseRows(sections.yapilacakIsler, ["kalem","miktar","birim","not"]);
+  t.satinAlinacaklar = parseRows(sections.satinAlinacaklar, ["urun","miktar","birim","not"]);
+  t.maliyetKalemleri = parseRows(sections.maliyetKalemleri, ["kalem","metraj","birim","tutar"]);
+  t.idariBilgiler = parseRows(sections.idariBilgiler, ["baslik","detay"]);
+  t.riskler = parseRows(sections.riskler, ["risk","onem","not"]);
+  return t;
+}
+function normalizeDateValue(value, field) {
+  if(field !== "ihaleTarihi") return value;
+  if(!value) return "";
+  const iso = value.match(/(20\d{2})-(\d{2})-(\d{2})[ T]?(\d{2})?:?(\d{2})?/);
+  if(iso) return `${iso[1]}-${iso[2]}-${iso[3]}T${iso[4]||"10"}:${iso[5]||"00"}`;
+  const tr = value.match(/(\d{1,2})[./](\d{1,2})[./](20\d{2}).*?(\d{1,2})?:?(\d{2})?/);
+  if(tr) return `${tr[3]}-${tr[2].padStart(2,"0")}-${tr[1].padStart(2,"0")}T${(tr[4]||"10").padStart(2,"0")}:${tr[5]||"00"}`;
+  return value;
 }
 function parseBox() {
   draft = parseTenderText(document.getElementById("pasteBox").value);
@@ -283,72 +349,96 @@ function parseBox() {
 function saveTender() {
   readDraft();
   if(!draft.ikn) { toast("İKN boş bırakılamaz"); return; }
-  const item = {...draft, id: draft.id || uid()};
+  const item = {...draft, id: draft.id || uid(), createdAt: draft.createdAt || new Date().toISOString()};
   data.tenders = [item, ...data.tenders.filter(t => t.id !== item.id && t.ikn !== item.ikn)];
-  data.selectedTender = item.id;
+  data.selectedId = item.id;
   save();
   draft = emptyTender();
   toast("İhale kaydedildi");
-  go("saved");
+  openDetail(item.id);
 }
 function renderSaved() {
-  const list = filterTenders().sort(tenderSort);
-  const selected = data.tenders.find(t => t.id === data.selectedTender) || list[0];
+  const list = filterTenders();
   document.getElementById("saved").innerHTML = `
     <div class="panel">
       <div class="panelhead">
-        <div><h2>Kayıtlı İhaleler</h2><p class="muted">Listede sadece İKN ve kalan/geçen gün görünür. İKN’ye dokununca detay açılır.</p></div>
+        <div><h2>Kayıtlı İhaleler</h2><p class="muted">Listede sadece İKN ve kalan/geçen gün var. Tıklayınca ayrı detay sayfası açılır.</p></div>
         <button class="back" onclick="go('home')">Ana Menü</button>
       </div>
       <div class="list">
         ${list.length ? list.map(row).join("") : `<div class="empty">Kayıtlı ihale bulunamadı.</div>`}
       </div>
     </div>
-    <div class="panel">
-      ${selected ? detail(selected) : `<div class="empty">Detay görmek için bir İKN seç.</div>`}
-    </div>
   `;
 }
 function row(t) {
   const d = daysInfo(t);
-  return `<button class="tenderrow ${d.cls}" onclick="selectTender('${t.id}')">
+  return `<button class="tenderrow ${d.cls}" onclick="openDetail('${t.id}')">
     <div><div class="ikn">${esc(t.ikn)}</div><div class="days">${esc(d.text)}</div></div>
     <span class="badge">${esc(t.durum || "Takipte")}</span>
   </button>`;
 }
-function selectTender(id) {
-  data.selectedTender = id;
+function openDetail(id) {
+  data.selectedId = id;
   save();
-  renderSaved();
-  setTimeout(() => {
-    const panels = document.querySelectorAll("#saved .panel");
-    if(panels[1]) panels[1].scrollIntoView({behavior:"smooth", block:"start"});
-  }, 50);
+  current = "detail";
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById("detail").classList.add("active");
+  document.getElementById("title").textContent = "İhale Detayı";
+  renderDetail();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+function renderDetail() {
+  const t = data.tenders.find(x => x.id === data.selectedId);
+  document.getElementById("detail").innerHTML = t ? detail(t) : `<div class="panel"><div class="empty">İhale bulunamadı.</div></div>`;
 }
 function detail(t) {
   const d = daysInfo(t);
   return `
-    <div class="detailtop">
-      <div>
-        <div class="smallpill">${esc(t.ikn)}</div>
-        <h3>${esc(t.isAdi || "İhale detayı")}</h3>
-        <p class="muted">${esc(d.text)} • ${esc(t.durum || "Takipte")}</p>
+    <div class="panel">
+      <div class="detailtop">
+        <div>
+          <div class="smallpill">${esc(t.ikn)}</div>
+          <h2>${esc(t.isAdi || "İhale detayı")}</h2>
+          <p class="muted" style="margin-top:6px">${esc(d.text)} • ${esc(t.durum || "Takipte")}</p>
+        </div>
+        <button class="back" onclick="go('saved')">Liste</button>
       </div>
-      <button class="back" onclick="copyTender('${t.id}')">Kopyala</button>
+      <div class="summarygrid" style="margin-top:12px">
+        ${info("İhale tarihi", formatDate(t.ihaleTarihi))}
+        ${info("Kurum", t.kurum)}
+        ${info("Yer", t.yer)}
+        ${info("Yaklaşık maliyet", t.yaklasikMaliyet)}
+        ${info("Önerilen teklif", t.onerilenTeklif)}
+        ${info("Teminat", t.teminat)}
+        ${info("İş deneyimi / benzer iş", t.isDeneyimi)}
+        ${info("Özet", t.ozet)}
+      </div>
     </div>
-    ${info("İhale tarihi", formatDate(t.ihaleTarihi))}
-    ${info("Kurum", t.kurum)}
-    ${info("Yer", t.yer)}
-    ${info("Yaklaşık maliyet", t.yaklasikMaliyet)}
-    ${info("Önerilen teklif", t.onerilenTeklif)}
-    ${info("Teminat", t.teminat)}
-    ${info("İş deneyimi / benzer iş", t.isDeneyimi)}
-    ${info("Teklif stratejisi", t.strateji)}
-    ${info("Risk notu", t.risk)}
-    ${info("Ek not", t.not)}
+    ${tablePanel("Yapılacak İşler", ["Kalem","Miktar","Birim","Not"], t.yapilacakIsler, ["kalem","miktar","birim","not"])}
+    ${tablePanel("Satın Alınacaklar", ["Ürün","Miktar","Birim","Not"], t.satinAlinacaklar, ["urun","miktar","birim","not"])}
+    ${tablePanel("Metraj / Maliyet", ["Kalem","Metraj","Birim","Tutar"], t.maliyetKalemleri, ["kalem","metraj","birim","tutar"])}
+    ${twoColPanel("İdari Şartname / Kritik Bilgiler", t.idariBilgiler)}
+    ${riskPanel("Riskler", t.riskler)}
+    <div class="panel"><button class="btn secondary" onclick="copyTender('${t.id}')">Bu ihaleyi kopyala</button></div>
   `;
 }
 function info(label,value) { return `<div class="info"><div class="l">${esc(label)}</div><div class="v">${esc(value || "-")}</div></div>`; }
+function tablePanel(title, headers, rows, keys) {
+  return `<div class="panel"><div class="sectiontitle"><h3>${esc(title)}</h3><span class="badge">${(rows||[]).length} satır</span></div>
+    ${(rows||[]).length ? `<div class="table"><div class="tr head">${headers.map(h=>`<div class="td">${esc(h)}</div>`).join("")}</div>${rows.map(r=>`<div class="tr">${keys.map(k=>`<div class="td">${esc(r[k]||"-")}</div>`).join("")}</div>`).join("")}</div>` : `<div class="empty">Bu bölüm için kayıt yok.</div>`}
+  </div>`;
+}
+function twoColPanel(title, rows) {
+  return `<div class="panel"><div class="sectiontitle"><h3>${esc(title)}</h3><span class="badge">${(rows||[]).length} satır</span></div>
+    ${(rows||[]).length ? `<div class="table"><div class="tr head two"><div class="td">Başlık</div><div class="td">Detay</div></div>${rows.map(r=>`<div class="tr two"><div class="td">${esc(r.baslik||"-")}</div><div class="td">${esc(r.detay||"-")}</div></div>`).join("")}</div>` : `<div class="empty">Bu bölüm için kayıt yok.</div>`}
+  </div>`;
+}
+function riskPanel(title, rows) {
+  return `<div class="panel"><div class="sectiontitle"><h3>${esc(title)}</h3><span class="badge">${(rows||[]).length} satır</span></div>
+    ${(rows||[]).length ? `<div class="table"><div class="tr head risk"><div class="td">Risk</div><div class="td">Önem</div><div class="td">Not</div></div>${rows.map(r=>`<div class="tr risk"><div class="td">${esc(r.risk||"-")}</div><div class="td">${esc(r.onem||"-")}</div><div class="td">${esc(r.not||"-")}</div></div>`).join("")}</div>` : `<div class="empty">Bu bölüm için kayıt yok.</div>`}
+  </div>`;
+}
 function copyTender(id) {
   const t = data.tenders.find(x => x.id === id);
   if(!t) return;
@@ -361,9 +451,7 @@ Yaklaşık maliyet: ${t.yaklasikMaliyet}
 Önerilen teklif: ${t.onerilenTeklif}
 Teminat: ${t.teminat}
 İş deneyimi / benzer iş: ${t.isDeneyimi}
-Teklif stratejisi: ${t.strateji}
-Risk notu: ${t.risk}
-Not: ${t.not}`;
+Özet: ${t.ozet}`;
   navigator.clipboard?.writeText(text);
   toast("Kopyalandı");
 }
@@ -371,6 +459,7 @@ function render() {
   renderHome();
   renderAdd();
   renderSaved();
+  if(current === "detail") renderDetail();
 }
 if("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(()=>{})); }
 render();
