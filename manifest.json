@@ -1,7 +1,7 @@
 {
   "name": "İhale Hafızası",
-  "short_name": "İhale Hafızası",
-  "description": "İhale, not, şifre, gelir-gider ve yapılacaklar için kişisel iş yönetim paneli.",
+  "short_name": "İhale",
+  "description": "Sadece ihale kaydetme ve kayıtlı ihaleleri tarih durumuna göre takip etme uygulaması.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
